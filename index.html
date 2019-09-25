@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+   <title> HR tools </title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body onload="setLocation()" id="body">
+<div class="row">
+
+    <div class="column" >
+    <h4 style="font-family:verdana;">
+        <p>Pick the Template File<sup><span>*</span></sup> <hint>(docx) </hint>   </p>
+        <p>Pick the data file<sup><span>*</span></sup> <hint>(xlsx,xls,csv) </hint>       </p>
+        <p>Destination path <hint>(location to be saved)</hint></p>
+    </h4>
+    </div>
+    <form onsubmit="return false">
+    <div class="column">
+        <br>
+        <input type="text" class="txtbox" id="wordFileName" required> <input type="button" id="chooseTemp" class="button" value="Browse"><br>
+        <input type="text" class="txtbox" id="xlFileName" required> <input type="button" id="chooseData" class="button" value="Browse"><br>
+        <input type="text" class="txtbox" id="location" required> <input type="button" id="save" class="button" value="Browse">
+      </div>
+    <br>
+</div>
+
+<div class="row" style="text-align:center">
+    <input type="checkbox" name="email" id="mail" value="send"> Send log as Mail <br>
+  <br>
+    <input type="submit" id="generate" class="submit" value="Generate">
+    </form>
+</div>
+
+</body>
+
+<script>
+    const {ipcRenderer,remote} =require('electron');
+
+    document.querySelector("#chooseTemp").addEventListener('click',()=>{
+        ipcRenderer.send("openDialog1");
+    });
+
+    document.querySelector("#chooseData").addEventListener('click',()=>{
+        ipcRenderer.send("openDialog2");
+    });
+
+    document.querySelector('#save').addEventListener('click',()=>{
+       ipcRenderer.send('saveDialog')
+    });
+
+    document.querySelector("#generate").addEventListener('click',()=>{
+        remote.getGlobal('sharedObj').mail=document.getElementById('mail').checked;
+        remote.getGlobal('sharedObj').wrdFile=document.getElementById('wordFileName').value
+        remote.getGlobal('sharedObj').xlFile=document.getElementById('xlFileName').value
+        remote.getGlobal('sharedObj').outputLoc=document.getElementById('location').value
+        ipcRenderer.send("generate");
+    });
+
+      ipcRenderer.on("wordReply",() => {
+        document.getElementById('wordFileName').value=remote.getGlobal('sharedObj').wrdFile;
+    })
+      ipcRenderer.on("xlReply",() => {
+        document.getElementById('xlFileName').value=remote.getGlobal('sharedObj').xlFile;
+    })
+
+      ipcRenderer.on("saveLocation",() => {
+        document.getElementById('location').value=remote.getGlobal('sharedObj').outputLoc;
+    })
+
+
+    function  setLocation() {
+          document.getElementById('location').value=process.cwd()+'\\Output';
+    }
+
+</script>
+<script src="index.js"></script>
+</html>

@@ -1,0 +1,61 @@
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+span{
+  color: red;
+  font-size: small;
+  font-family: "Comic Sans MS";
+}
+
+hint{
+ color: dimgray;
+   font-size: small;
+  font-family: "Comic Sans MS";
+}
+
+.txtbox{
+  width:70%;
+  padding: 4px; /* Some padding */
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-left: 2px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical
+}
+.submit {
+   /* Full width */
+  padding: 4px; /* Some padding */
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-left: 2px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
+  cursor: pointer;
+}
+
+.button {
+   /* Full width */
+  padding: 4px; /* Some padding */
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-left: 2px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
+  cursor: pointer;
+}
+
+.submit:hover {
+  background-color: #34a08d;
+}

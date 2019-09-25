@@ -1,0 +1,22 @@
+{
+  "name": "Report Generator",
+  "version": "1.0.0",
+  "description": "Generate a report word document from a template by taking inputs from excel file",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron . "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "generate-docx": "^2.1.1",
+    "os": "^0.1.1",
+    "sendmail": "^1.6.1",
+    "simple-excel-to-json": "^2.2.1"
+  },
+  "devDependencies": {
+    "electron": "^6.0.10"
+  }
+}
