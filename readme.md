@@ -6,4 +6,4 @@
   2. If you want replace a {date} placeholder in template file,make sure that date column in excel file is in text format
         (hint: select the date column in excel file,right click on it, select formating options and choose Text format)
   3. For sending generation report to mail,you should mention mail id's in mail.txt file (open resources >> app >> mail.txt)
-        (hint : if you want to send to more than one mail id, give those as comma seperated  like  xyz@quotient.com,abc@quotient.com )
+        (hint : if you want to send to more than one mail id, give those as comma seperated  like  xyz@abct.com,abc@xyz.com )
